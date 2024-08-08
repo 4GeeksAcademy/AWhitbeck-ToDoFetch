@@ -1,12 +1,46 @@
 
-/* 
-
-    You can write your own styles here...
-    
-    
+/*    You can write your own styles here...   
     ...Or you can use the import command to include 
     other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
 
+    import 'relative/path/to/stylesheet.scss';
 */
+body {
+    background-image: url("https://th.bing.com/th/id/R.20c5d1d619acfbb0ecbc1af068c528a6?rik=RZN0ufRlshz9kg&riu=http%3a%2f%2fbgfons.com%2fuploads%2fcork%2fcork_texture7018.jpg&ehk=IIvJ5dEv13Sy5mhdovBtA2rnA9jpjjBcUyr88qkEGyM%3d&risl=&pid=ImgRaw&r=0");
+    background-size: contain;
+}
+
+.strikeThrough {
+    text-decoration: line-through;
+}
+
+.postIt {
+    box-shadow: inset 0px -89px 19px rgb(255, 2, 2);
+    background-color: rgb(249, 249, 143);
+    box-shadow: 5px 48px 19px 1px rgba(0, 0, 0, 0.6);
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    margin-top: 25vh;
+    rotate: 3deg;
+}
+
+input {
+    background-color: rgba(237, 237, 3, 0);
+    font-family: cursive;
+    border: 0px;
+    padding: 10px 25px 10px 39px;
+}
+
+ul {
+    text-align: start;
+    font-family: cursive;
+    list-style:inside;
+    overflow-wrap: break-word;
+    padding-right: 10px;
+    margin-top: 20px;
+}
+
+.checkbox {
+    margin-left: 0px;
+}
