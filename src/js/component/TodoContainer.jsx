@@ -1,18 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export function TodoContainer() {
     const [todos, setTodos] = useState([]);
     const [task, setTask] = useState("");
 
-    const handleCheckboxChange = (index) => {
+    useEffect(() => {
+        async function createUser() {
+            let response = await fetch("https://playground.4geeks.com/todo/users/Antonio", {
+                headers: { "Content-type": "application/json" },
+                method: "POST",
+            })
+            let data = await response.json()
+            getTodo()
+        }
+        createUser()
+    }, [])
+
+        async function getTodo() {
+            let response = await fetch("https://playground.4geeks.com/todo/users/Antonio")
+            let data = await response.json()
+            setTodos(data.todos)
+        }
+
+    const handleCheckboxChange = async(index) => {
         const updatedTodos = todos.map((todo, todoIndex) => {
             if (todoIndex === index) {
                 return { ...todo, done: !todo.done };
             }
+            if(todo.done == true) {
+                let response = await("https://playground.4geeks.com/todo/todos/" + todo.id, {
+                    body: JSON.stringify({label: todo.label, is_done: todo.done}),
+                    headers: { "Content-type": "application/json" },
+                    method: "POST",
+                })
+                let data = response.json()
+
+            }
+            else if(todo.done == false) {
+                let response = await("https://playground.4geeks.com/todo/todos/Antonio", {
+                    body: JSON.stringify({label: todo.label, is_done: todo.done}),
+                    headers: { "Content-type": "application/json" },
+                    method: "POST",
+                })
+                let data = response.json()
+            }
             return todo;
         });
-
-        setTodos(updatedTodos);
+        getTodo()
     };
 
     return (
@@ -44,7 +78,8 @@ export function TodoContainer() {
                     <div key={index + 1} className={todo.done ? "strikeThrough d-flex checkbox" : "d-flex"}>
                         <li>{todo.label}</li>
                         <input
-                            type="checkbox"
+                            type="checkbox" 
+                            className="float-right"
                             checked={todo.done}
                             id="#checkbox"
                             onChange={() => handleCheckboxChange(index)}
