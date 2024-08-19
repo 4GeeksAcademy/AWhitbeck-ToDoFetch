@@ -15,9 +15,9 @@ body {
 }
 
 .postIt {
-    box-shadow: inset 0px -89px 19px rgb(255, 2, 2);
     background-color: rgb(249, 249, 143);
-    box-shadow: 5px 48px 19px 1px rgba(0, 0, 0, 0.6);
+    box-shadow: 5px 48px 19px 1px rgba(0, 0, 0, 0.6),
+    inset 0px -110px 50px -5px rgba(0, 0, 0, 0.414);
     width: 300px;
     height: 300px;
     margin: auto;
@@ -28,8 +28,9 @@ body {
 input {
     background-color: rgba(237, 237, 3, 0);
     font-family: cursive;
-    border: 0px;
     padding: 10px 25px 10px 39px;
+    border: none;
+    outline: none;
 }
 
 ul {
@@ -41,6 +42,34 @@ ul {
     margin-top: 20px;
 }
 
-.checkbox {
+.delete {
     margin-left: 0px;
 }
+
+button {
+    background: rgba(255, 255, 0, 0);
+    border-color: rgba(255, 255, 0, 0);
+}
+
+.button-container {
+    display: flex;
+    gap: 8px; /* Adjust the spacing between the icons as needed */
+    align-items: center;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px; /* Adjust padding for better click area */
+}
+
+button:focus {
+    outline: none;
+}
+
+button .faPenToSquare, button .faTrash {
+    font-size: 16px; /* Adjust icon size if needed */
+    color: #000; /* Adjust color if needed */
+}
+
